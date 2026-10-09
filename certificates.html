@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificates — Odia Roots Manabasa Competition 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><i class="fa-solid fa-fire" aria-hidden="true"></i></span>
+      <span class="brand-text">
+        <span class="brand-title">Odia Roots</span>
+        <span class="brand-sub">Manabasa Gurubar 2026</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="certificates.html" class="active">Certificates</a></li>
+      <li><a href="judge.html">Judge Portal</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="register.html" class="nav-cta">Register &amp; Submit</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page-title-band">
+  <h1><i class="fa-solid fa-certificate" aria-hidden="true"></i> Your Certificates</h1>
+  <p>Download your auto-generated certificates as PDF.</p>
+</div>
+
+<main class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="card">
+      <h3><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Find Your Entry</h3>
+      <p class="mb-2" style="font-size:0.9rem;">Enter your Entry ID (e.g. ORM2026-0001) and the email you registered with.</p>
+      <div id="lookup-alert" class="alert alert-error hidden" role="alert"></div>
+      <form id="lookup-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lk-entry">Entry ID</label>
+            <input type="text" id="lk-entry" placeholder="ORM2026-0001" required autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="lk-email">Registered Email</label>
+            <input type="email" id="lk-email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%;"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Find My Certificates</button>
+      </form>
+    </div>
+
+    <div id="cert-list" class="hidden mt-3">
+      <h2 style="font-size:1.35rem;margin-bottom:0.35rem;" id="cert-owner"></h2>
+      <p class="muted mb-2" style="font-size:0.88rem;">Certificates available for your entry:</p>
+      <div id="cert-cards" class="grid" style="grid-template-columns:1fr;gap:1rem;"></div>
+    </div>
+
+    <div class="card mt-3">
+      <h3><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About the Certificates</h3>
+      <ul class="rules-list mt-1">
+        <li><i class="fa-solid fa-scroll"></i> <strong>"Keeper of Odia Tradition"</strong> — participation certificate for every entry with a submitted video.</li>
+        <li><i class="fa-solid fa-child-reaching"></i> <strong>"Young Keeper of Odia Culture"</strong> — an additional children's certificate whenever an entry lists participating children.</li>
+        <li><i class="fa-solid fa-trophy"></i> <strong>"Award of Excellence"</strong> — for category winners, featuring the specific award name of their category. Available after results are published.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="border-top:none;margin-top:0;">
+    Odia Roots · Organizing Committee &nbsp;·&nbsp; OdiaRoots.org · Manabasa Gurubar 2026
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/certificates.js"></script>
+<script src="js/cert-lookup.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Odia Roots Manabasa Competition 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><i class="fa-solid fa-fire" aria-hidden="true"></i></span>
+      <span class="brand-text">
+        <span class="brand-title">Odia Roots</span>
+        <span class="brand-sub">Manabasa Gurubar 2026</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="judge.html">Judge Portal</a></li>
+      <li><a href="admin.html" class="active">Admin</a></li>
+      <li><a href="register.html" class="nav-cta">Register &amp; Submit</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page-title-band">
+  <h1><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Admin Dashboard</h1>
+  <p>Organizing Committee — registrations, judging, engagement, and results control.</p>
+</div>
+
+<main class="section">
+  <div class="container">
+
+    <!-- LOGIN GATE -->
+    <div class="login-shell" id="login-shell">
+      <div class="lock-circle"><i class="fa-solid fa-user-shield" aria-hidden="true"></i></div>
+      <h2>Organizers Only</h2>
+      <p class="muted mb-2" style="font-size:0.9rem;">Enter the admin password.</p>
+      <div id="login-alert" class="alert alert-error hidden" role="alert"></div>
+      <form id="login-form">
+        <div class="form-group" style="text-align:left;">
+          <label for="admin-pass">Admin Password</label>
+          <input type="password" id="admin-pass" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn-maroon" style="width:100%;"><i class="fa-solid fa-key" aria-hidden="true"></i> Enter Dashboard</button>
+      </form>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.25rem;">
+        <div class="tabs" style="margin-bottom:0;border-bottom:none;padding-bottom:0;">
+          <button class="tab-btn active" data-tab="overview"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Overview</button>
+          <button class="tab-btn" data-tab="entries"><i class="fa-solid fa-table-list" aria-hidden="true"></i> Entries</button>
+          <button class="tab-btn" data-tab="leaderboard"><i class="fa-solid fa-ranking-star" aria-hidden="true"></i> Judging Leaderboard</button>
+          <button class="tab-btn" data-tab="peoples-choice"><i class="fa-brands fa-facebook" aria-hidden="true"></i> People's Choice</button>
+          <button class="tab-btn" data-tab="settings"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</button>
+        </div>
+        <button class="btn btn-sm btn-maroon" id="logout-btn"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Log out</button>
+      </div>
+
+      <div id="admin-alert" class="alert alert-success hidden" role="status"></div>
+
+      <!-- OVERVIEW -->
+      <section class="tab-panel active" id="tab-overview">
+        <div class="grid grid-4 mb-3" id="stat-cards"></div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Registrations by Category</h3>
+            <div id="by-category" class="mt-2"></div>
+          </div>
+          <div class="card">
+            <h3><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Registrations by State</h3>
+            <div id="by-state" class="mt-2"></div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <h3><i class="fa-solid fa-bell" aria-hidden="true"></i> Video Follow-Up List <span class="muted" style="font-size:0.8rem;font-weight:400;">registered but no video yet</span></h3>
+          <div class="table-wrap mt-2">
+            <table class="data-table" id="pending-table">
+              <thead><tr><th>Entry ID</th><th>Name</th><th>Category</th><th>Email</th><th>Phone</th><th>Registered</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENTRIES -->
+      <section class="tab-panel" id="tab-entries">
+        <div class="filter-bar">
+          <input type="text" id="entry-search" placeholder="Search Entry ID, name, city, email…" aria-label="Search entries">
+          <select id="entry-cat-filter" aria-label="Filter by category"><option value="">All categories</option></select>
+          <select id="entry-status-filter" aria-label="Filter by status">
+            <option value="">All statuses</option>
+            <option>Registered</option><option>Video Submitted</option><option>Judged</option><option>Winner</option>
+          </select>
+          <button class="btn btn-sm btn-maroon" id="export-csv"><i class="fa-solid fa-file-csv" aria-hidden="true"></i> Export CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="entries-table">
+            <thead><tr><th>Entry ID</th><th>Name</th><th>Location</th><th>Category</th><th>Title</th><th>Video</th><th>Status</th><th>Avg Score</th><th>Details</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div id="entry-detail" class="card mt-3 hidden"></div>
+      </section>
+
+      <!-- LEADERBOARD -->
+      <section class="tab-panel" id="tab-leaderboard">
+        <p class="muted mb-2" style="font-size:0.88rem;"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Ranked by averaged weighted judge scores <strong>within each category</strong>. People's Choice is excluded here — it is decided by Facebook engagement on its own tab.</p>
+        <div id="leaderboard-wrap"></div>
+      </section>
+
+      <!-- PEOPLE'S CHOICE -->
+      <section class="tab-panel" id="tab-peoples-choice">
+        <p class="muted mb-2" style="font-size:0.88rem;">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Only entries submitted to the <strong>People's Choice Award</strong> category appear here.
+          Log Facebook engagement manually; Engagement Score = Likes + (Comments × 2) + (Shares × 3).
+          Use "Flagged Suspicious" for suspected paid promotion or fake engagement.
+        </p>
+        <div class="table-wrap">
+          <table class="data-table" id="pc-table">
+            <thead><tr><th>Rank</th><th>Entry ID</th><th>Participant</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Engagement</th><th>Flagged Suspicious</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="tab-panel" id="tab-settings">
+        <div class="grid grid-2">
+          <div class="card">
+            <h3><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Results Publication</h3>
+            <p class="mb-2">When published, category winners appear on the public Results page. Keep unpublished until judging is complete.</p>
+            <div id="publish-state" class="alert alert-info">Loading…</div>
+            <button class="btn btn-gold" id="toggle-publish">Toggle</button>
+          </div>
+          <div class="card">
+            <h3><i class="fa-solid fa-calendar-day" aria-hidden="true"></i> Registration Deadline</h3>
+            <p class="mb-2">Shown on the landing page. Currently a placeholder until finalized.</p>
+            <div class="form-group">
+              <label for="deadline-input">Deadline text</label>
+              <input type="text" id="deadline-input" placeholder="To Be Announced">
+            </div>
+            <button class="btn btn-maroon" id="save-deadline">Save Deadline</button>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <h3><i class="fa-solid fa-key" aria-hidden="true"></i> Judge &amp; Admin Passwords</h3>
+          <p class="mb-2">Logins are real accounts managed in Supabase, so passwords can no longer be changed from this page. To change one, open your Supabase project → <strong>SQL Editor</strong> and run the "change password" command from your <code>docs</code> folder (ask Om if unsure). Change the judge password after judging ends.</p>
+          <p style="font-size:0.85rem;color:var(--ink-soft);"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> The database itself checks your login on every request, so participant details and scores are protected even if someone bypasses this page.</p>
+        </div>
+        <div class="card mt-3">
+          <h3><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email Confirmations</h3>
+          <p>Email sending is <strong>prepared but inactive</strong>. On-screen Entry ID confirmation is the active method. When a provider (e.g. Resend) is chosen, it will be connected through securely stored secrets on a server-side proxy — never an API key in this site's code.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="border-top:none;margin-top:0;">
+    Odia Roots · Organizing Committee &nbsp;·&nbsp; OdiaRoots.org · Manabasa Gurubar 2026
+  </div>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Results — Odia Roots Manabasa Competition 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><i class="fa-solid fa-fire" aria-hidden="true"></i></span>
+      <span class="brand-text">
+        <span class="brand-title">Odia Roots</span>
+        <span class="brand-sub">Manabasa Gurubar 2026</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="results.html" class="active">Results</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="judge.html">Judge Portal</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="register.html" class="nav-cta">Register &amp; Submit</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page-title-band">
+  <h1><i class="fa-solid fa-trophy" aria-hidden="true"></i> Competition Results</h1>
+  <p>Category winners of the Manabasa Gurubar Heritage Competition 2026.</p>
+</div>
+
+<main class="section">
+  <div class="container">
+    <div id="loading" class="loading-spin"><i class="fa-solid fa-spinner fa-spin"></i> Loading results…</div>
+
+    <!-- Not yet published -->
+    <div id="not-published" class="hidden" style="max-width:560px;margin:2rem auto;text-align:center;">
+      <div class="card" style="padding:2.5rem;">
+        <div class="icon-circle" style="margin:0 auto 1rem;"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i></div>
+        <h2 style="font-size:1.5rem;">Results Coming Soon</h2>
+        <p class="mt-1">Judging is underway. Winners for all 8 categories will be announced here once the
+        Organizing Committee finalizes the results. Please check back!</p>
+        <a href="index.html" class="btn btn-maroon mt-3" style="display:inline-block;">Back to Home</a>
+      </div>
+    </div>
+
+    <!-- Published results -->
+    <div id="results-wrap" class="hidden">
+      <div class="section-head">
+        <span class="eyebrow">Congratulations</span>
+        <h2>Our 2026 Winners</h2>
+        <div class="divider-motif"><i class="fa-solid fa-fan" aria-hidden="true"></i></div>
+        <p>Seven categories were decided by the judges' weighted scores; the People's Choice Award was decided by genuine Facebook community engagement.</p>
+      </div>
+      <div class="grid grid-2" id="winners-grid"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="border-top:none;margin-top:0;">
+    Odia Roots · Organizing Committee &nbsp;·&nbsp; OdiaRoots.org · Manabasa Gurubar 2026
+  </div>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/results.js"></script>
+</body>
+</html>

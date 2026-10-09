@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judge Portal — Odia Roots Manabasa Competition 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><i class="fa-solid fa-fire" aria-hidden="true"></i></span>
+      <span class="brand-text">
+        <span class="brand-title">Odia Roots</span>
+        <span class="brand-sub">Manabasa Gurubar 2026</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="judge.html" class="active">Judge Portal</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="register.html" class="nav-cta">Register &amp; Submit</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page-title-band">
+  <h1><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Judge Portal</h1>
+  <p>Score entries on the six official weighted criteria.</p>
+</div>
+
+<main class="section">
+  <div class="container">
+
+    <!-- LOGIN GATE -->
+    <div class="login-shell" id="login-shell">
+      <div class="lock-circle"><i class="fa-solid fa-lock" aria-hidden="true"></i></div>
+      <h2>Judges Only</h2>
+      <p class="muted mb-2" style="font-size:0.9rem;">Enter the judge password provided by the Organizing Committee.</p>
+      <div id="login-alert" class="alert alert-error hidden" role="alert"></div>
+      <form id="login-form">
+        <div class="form-group" style="text-align:left;">
+          <label for="judge-pass">Judge Password</label>
+          <input type="password" id="judge-pass" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn-maroon" style="width:100%;"><i class="fa-solid fa-key" aria-hidden="true"></i> Enter Portal</button>
+      </form>
+    </div>
+
+    <!-- PORTAL -->
+    <div id="portal" class="hidden">
+      <div style="display:flex;justify-content:flex-end;max-width:760px;margin:0 auto 0.75rem;">
+        <button class="btn btn-sm btn-maroon" id="logout-btn"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Log out</button>
+      </div>
+
+      <div class="form-shell" id="scorecard-shell">
+        <div class="form-banner">
+          <h2><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Judge Scorecard</h2>
+          <p>Score each criterion 0–10. Your weighted total appears live below. Re-submitting for the same Entry ID replaces your previous scorecard for that entry.</p>
+        </div>
+        <div class="form-body">
+          <div id="sc-alert" class="alert alert-error hidden" role="alert"></div>
+          <div id="sc-success" class="alert alert-success hidden" role="status"></div>
+
+          <form id="scorecard-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sc-entry">Entry ID of the participant you are judging <span class="req">*</span></label>
+                <select id="sc-entry" required>
+                  <option value="">— Select the participant's Entry ID —</option>
+                </select>
+                <div class="hint"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> This is the <strong>participant's</strong> Entry ID (ORM2026-XXXX) — <strong>not your own name or ID</strong>.</div>
+                <div class="field-error" id="err-sc-entry">Please select the Entry ID you are judging.</div>
+              </div>
+              <div class="form-group">
+                <label for="sc-judge">Your Judge Name <span class="req">*</span></label>
+                <input type="text" id="sc-judge" required placeholder="e.g. Dr. S. Pattnaik">
+                <div class="hint">Use the same spelling every time so your re-scores replace correctly.</div>
+                <div class="field-error" id="err-sc-judge">Please enter your name as the judge.</div>
+              </div>
+            </div>
+
+            <div id="entry-preview" class="alert alert-info hidden" style="font-size:0.88rem;"></div>
+
+            <fieldset>
+              <legend>Scores (0–10 each)</legend>
+              <div class="score-grid" id="score-grid"><!-- built by JS --></div>
+              <div class="field-error" id="err-scores">All six criteria need a score between 0 and 10.</div>
+              <div class="score-preview">
+                <span><i class="fa-solid fa-calculator" aria-hidden="true"></i> Weighted Final Score (0–100)</span>
+                <span class="val" id="live-score">0.00</span>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="sc-comments">Comments <span class="muted">(optional)</span></label>
+              <textarea id="sc-comments" placeholder="Notes on the entry's strengths, authenticity, presentation…"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold" id="sc-submit" style="width:100%;">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Submit Scorecard
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- My scorecards -->
+      <section class="mt-4" style="max-width:900px;margin-left:auto;margin-right:auto;">
+        <h2 style="font-size:1.3rem;margin-bottom:0.75rem;"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Scorecards You've Submitted</h2>
+        <p class="muted mb-2" style="font-size:0.85rem;">Enter your judge name above to see your scorecards. Only your most recent scorecard per entry counts.</p>
+        <div class="table-wrap">
+          <table class="data-table" id="my-scores-table">
+            <thead><tr><th>Entry ID</th><th>Participant</th><th>Category</th><th>Final Score</th><th>Scored</th></tr></thead>
+            <tbody><tr><td colspan="5" class="muted text-center">No scorecards yet.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="border-top:none;margin-top:0;">
+    Odia Roots · Organizing Committee &nbsp;·&nbsp; OdiaRoots.org · Manabasa Gurubar 2026
+  </div>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/judge.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register &amp; Submit — Odia Roots Manabasa Competition 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><i class="fa-solid fa-fire" aria-hidden="true"></i></span>
+      <span class="brand-text">
+        <span class="brand-title">Odia Roots</span>
+        <span class="brand-sub">Manabasa Gurubar 2026</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#categories">Categories</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="judge.html">Judge Portal</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="register.html" class="nav-cta active">Register &amp; Submit</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="form-shell" id="form-shell">
+      <div class="form-banner">
+        <h1><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Registration &amp; Video Submission</h1>
+        <p>One form does it all — register your family and submit your video together. Fields marked <span style="color:#F3B8B4">*</span> are required.</p>
+      </div>
+
+      <div class="form-body">
+        <div id="form-alert" class="alert alert-error hidden" role="alert"></div>
+
+        <form id="entry-form" novalidate>
+          <!-- PARTICIPANT -->
+          <fieldset>
+            <legend><i class="fa-solid fa-user-group" aria-hidden="true"></i> Participant Details</legend>
+
+            <div class="form-group">
+              <label for="participant_name">Family / Participant Name <span class="req">*</span></label>
+              <input type="text" id="participant_name" name="participant_name" required autocomplete="name" placeholder="e.g. The Mohanty Family">
+              <div class="field-error" id="err-participant_name">Please enter your family or participant name.</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">City <span class="req">*</span></label>
+                <input type="text" id="city" name="city" required autocomplete="address-level2" placeholder="e.g. Dallas">
+                <div class="field-error" id="err-city">Please enter your city.</div>
+              </div>
+              <div class="form-group">
+                <label for="state">State <span class="req">*</span></label>
+                <select id="state" name="state" required>
+                  <option value="">— Select state —</option>
+                </select>
+                <div class="field-error" id="err-state">Please select your state.</div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                <div class="field-error" id="err-email">Please enter a valid email address.</div>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(555) 555-5555">
+                <div class="field-error" id="err-phone">Please enter a valid phone number.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="children_info">Names &amp; Ages of Participating Children <span class="muted">(optional)</span></label>
+              <textarea id="children_info" name="children_info" placeholder="e.g. Ananya (9), Aarav (6)"></textarea>
+              <div class="hint">If children participate, each child listed here will receive a "Young Keeper of Odia Culture" certificate.</div>
+            </div>
+          </fieldset>
+
+          <!-- ENTRY -->
+          <fieldset>
+            <legend><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> Your Entry</legend>
+
+            <div class="form-group">
+              <label for="category">Competition Category <span class="req">*</span></label>
+              <select id="category" name="category" required>
+                <option value="">— Select a category —</option>
+              </select>
+              <div class="field-error" id="err-category">Please choose a competition category.</div>
+              <div class="hint" id="pc-hint" style="display:none;color:#8a6d1a;"><i class="fa-solid fa-circle-info"></i> People's Choice is decided by genuine Facebook engagement, not judge scoring. A public Facebook link is strongly recommended.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="submission_title">Title of Your Submission <span class="req">*</span></label>
+              <input type="text" id="submission_title" name="submission_title" required placeholder='e.g. "Maa Lakshmi Comes to Our Texas Home"'>
+              <div class="hint">A name for your video — not the category name.</div>
+              <div class="field-error" id="err-submission_title">Please give your submission a title.</div>
+            </div>
+
+            <div class="form-group">
+              <span class="hint" style="display:block;font-weight:600;color:var(--ink);font-size:0.9rem;margin-bottom:0.35rem;">How are you submitting your video? <span class="req">*</span></span>
+              <div class="radio-row" role="radiogroup" aria-label="Submission method">
+                <label class="radio-pill"><input type="radio" name="submission_method" value="Facebook Link"> <i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook Link</label>
+                <label class="radio-pill"><input type="radio" name="submission_method" value="Google Drive Link"> <i class="fa-brands fa-google-drive" aria-hidden="true"></i> Google Drive Link</label>
+              </div>
+              <div class="field-error" id="err-submission_method">Please choose how you are submitting your video.</div>
+            </div>
+
+            <div class="conditional-block" id="fb-block">
+              <div class="form-group">
+                <label for="facebook_link">Facebook Video Link <span class="req">*</span></label>
+                <input type="url" id="facebook_link" name="facebook_link" placeholder="https://www.facebook.com/...">
+                <div class="hint">Make sure the video's privacy is set to Public so judges can view it.</div>
+                <div class="field-error" id="err-facebook_link">Please paste your Facebook video link (must start with http).</div>
+              </div>
+            </div>
+
+            <div class="conditional-block" id="drive-block">
+              <div class="form-group">
+                <label for="drive_link">Google Drive Video Link <span class="req">*</span></label>
+                <input type="url" id="drive_link" name="drive_link" placeholder="https://drive.google.com/file/d/...">
+                <div class="hint">Upload your video to Google Drive, click <strong>Share</strong>, set General access to <strong>"Anyone with the link"</strong> (Viewer), then <strong>Copy link</strong> and paste it here. Judges cannot watch videos that are set to Restricted.</div>
+                <div class="field-error" id="err-drive_link">Please paste a Google Drive share link (it should start with https://drive.google.com/).</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="facebook_profile">Facebook Page / Profile Used <span class="muted">(optional — for tag verification)</span></label>
+              <input type="text" id="facebook_profile" name="facebook_profile" placeholder="e.g. facebook.com/mohantyfamily">
+            </div>
+
+            <div class="form-group">
+              <label for="description">Short Description of Your Entry <span class="req">*</span></label>
+              <textarea id="description" name="description" required placeholder="Tell us what your video shows — the traditions, the people, the story."></textarea>
+              <div class="field-error" id="err-description">Please describe your entry briefly.</div>
+            </div>
+          </fieldset>
+
+          <!-- CONSENT -->
+          <fieldset>
+            <legend><i class="fa-solid fa-file-signature" aria-hidden="true"></i> Consent</legend>
+            <div class="form-group">
+              <span class="hint" style="display:block;font-weight:600;color:var(--ink);font-size:0.9rem;margin-bottom:0.35rem;">Do you consent to Odia Roots publishing photos/video from your entry? <span class="req">*</span></span>
+              <div class="radio-row" role="radiogroup" aria-label="Consent to publish">
+                <label class="radio-pill"><input type="radio" name="consent_publish" value="Yes"> Yes, I consent</label>
+                <label class="radio-pill"><input type="radio" name="consent_publish" value="No"> No</label>
+              </div>
+              <div class="field-error" id="err-consent_publish">Please choose Yes or No.</div>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn btn-gold" id="submit-btn" style="width:100%;font-size:1.05rem;">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Submit My Entry
+          </button>
+          <p class="hint text-center mt-1">You'll receive your unique Entry ID on screen immediately after submitting.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- CONFIRMATION (hidden until submit) -->
+    <div class="form-shell hidden" id="confirm-shell">
+      <div class="confirm-panel">
+        <div class="check-circle"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
+        <h2 style="font-size:1.6rem;">Entry Received — Dhanyabad!</h2>
+        <p class="muted mt-1">Your registration and submission are confirmed. Your unique Entry ID is:</p>
+        <div class="entry-id-badge" id="confirm-entry-id">ORM2026-0000</div>
+        <p class="muted" style="max-width:480px;margin:0.5rem auto;">
+          <strong>Please save this Entry ID.</strong> It identifies your entry for judging, results,
+          and certificates. A confirmation email will also be sent once our email service is activated —
+          for now, this screen is your official confirmation.
+        </p>
+        <div id="confirm-summary" class="mt-2" style="max-width:440px;margin:1rem auto;text-align:left;background:var(--cream);border:1px solid var(--cream-dark);border-radius:10px;padding:1rem 1.25rem;font-size:0.9rem;"></div>
+        <div class="mt-2">
+          <a href="index.html" class="btn btn-maroon btn-sm">Back to Home</a>
+          <a href="register.html" class="btn btn-gold btn-sm">Submit Another Entry</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="border-top:none;margin-top:0;">
+    Odia Roots · Organizing Committee &nbsp;·&nbsp; OdiaRoots.org · Manabasa Gurubar 2026
+  </div>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>
